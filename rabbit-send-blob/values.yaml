@@ -1,0 +1,47 @@
+# Default values for common-chart.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+image:
+  repository: externalacr99.azurecr.io/new_moshava/rabbit-send-blob
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: "v0.0.1"
+
+imagePullSecrets: []
+nameOverride: "rabbit-send-blob"
+fullnameOverride: "rabbit-send-blob"
+
+commonEnv:
+  - name: Container
+    value: "testdata"
+  - name: rabbitMQConnectionAppSetting
+    value: "amqp://user:1718sQMbPu@rabbit.prodintegration.private.westeurope.azmk8s.io:5672/"
+  - name: RabbitMQQueue
+    value: "black_shark_q"
+  - name: StorageConnectionString
+    value: "DefaultEndpointsProtocol=https;AccountName=prodbssaprod;AccountKey=DKN45jHAndRfb/8zjJ3LCDJ+jDVzTdl+8Fc3+p7BHde/btPZOeeGEMhaSMqPv4ptzxF9EKHbavoc+AStrCQ8sw==;EndpointSuffix=core.windows.net"
+
+
+service:
+  type: ClusterIP
+  port: 8080
+
+ingress:
+  enabled: true
+  className: ""
+  annotations: 
+    kubernetes.io/ingress.class: nginx
+    kubernetes.io/tls-acme: "true"
+  hosts:
+    - host: rabbit-send-blob.local
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls: []
+  #  - secretName: chart-example-tls
+  #    hosts:
+  #      - chart-example.local
+
