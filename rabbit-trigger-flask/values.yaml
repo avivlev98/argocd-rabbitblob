@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: externalacr99.azurecr.io/new_moshava/rabbit-flask-rerun
+  repository: avivacr13.azurecr.io/docker/rabbit-flask-rerun
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: "v0.0.1"
@@ -16,9 +16,9 @@ fullnameOverride: "rabbit-trigger-flask"
 
 commonEnv:
   - name: StorageConnectionString
-    value: "DefaultEndpointsProtocol=https;AccountName=prodbssaprod;AccountKey=DKN45jHAndRfb/8zjJ3LCDJ+jDVzTdl+8Fc3+p7BHde/btPZOeeGEMhaSMqPv4ptzxF9EKHbavoc+AStrCQ8sw==;EndpointSuffix=core.windows.net"
+    value: "DefaultEndpointsProtocol=https;AccountName=avivblob;AccountKey=BZcRSYm5HUiXgLz3aWCEygw6ECy8RHKBAzlpJmUkYBtiUpdaxixRGz2D/t+ExznpeHKYuFnKTL7H+AStJzIo5A==;EndpointSuffix=core.windows.net"
   - name: Container
-    value: "testdata"
+    value: "datatest"
 
 service:
   type: ClusterIP
