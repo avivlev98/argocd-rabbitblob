@@ -10,7 +10,8 @@ image:
   # Overrides the image tag whose default is the chart appVersion.
   tag: "v0.0.1"
 
-imagePullSecrets: myregistrykey
+imagePullSecrets:
+  - myregistrykey
 nameOverride: "rabbit-trigger-flask"
 fullnameOverride: "rabbit-trigger-flask"
 
